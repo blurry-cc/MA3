@@ -78,51 +78,59 @@ def sphere_volume_parallel2(n,d,np=10):
     
 def main():
     #Ex1
-    print("Testing old approximate pi.")
+    print("Excercise 1:\n")
     dots = [1000, 10000, 100000]
     for n in dots:
-        print(approximate_pi(n))
-    # #Ex2
-    # n = 100000
-    # d = 2
-    # sphere_volume(n,d)
-    # print(f"Actual volume of {d} dimentional sphere = {hypersphere_exact(d)} m^{d} ")
+        print(f"n = {n}: pi = {approximate_pi(n)}")
+    print("Excercise 1 complete.\n")
+    print(15*"-")
 
-    # n = 100000
-    # d = 11
-    # sphere_volume(n,d)
-    # print(f"Actual volume of {d} dimentional sphere = {hypersphere_exact(d)} m^{d} ")
+    #Ex2
+    print("Excercise 2:\n")
+    n = 100000
+    d = 2
+    print(f"Approcimate volume of {d} dimensional sphere = {round(sphere_volume(n,d), 4)} m^{d}")
+    print(f"n = {n}:\nActual volume of {d} dimentional sphere = {round(hypersphere_exact(d), 4)} m^{d} ")
+   
+    n = 100000
+    d = 11
+    print(f"Approcimate volume of {d} dimensional sphere = {round(sphere_volume(n,d), 4)} m^{d}")
+    print(f"n = {n}:\nActual volume of {d} dimentional sphere = {round(hypersphere_exact(d), 4)} m^{d} ")
+    print("Excercise 2 complete.\n")
+    print(15*"-")
 
-    # #Ex3
-    # n = 100000
-    # d = 11
-    # print("Testing excercise 3\n")
-    # start = pc()
-    # for y in range (10):
-    #     sphere_volume(n,d)
-    # stop = pc()
-    # print(f"Ex3: Sequential time of {d} and {n}: {round(stop-start, 3)} seconds\n")
-    # print("What is parallel time?")
-    # start = pc() 
-    # sphere_volume_parallel1(n, d)
-    # stop = pc()
-    # print(f"Parallel time of {d} and {n}: {round(stop-start, 3)} seconds\n")
-    # print("Test complete.")
+    #Ex3
+    n = 100000
+    d = 11
+    print("Excercise 3:\n")
+    start = pc()
+    for y in range (10):
+        sphere_volume(n,d)
+    stop = pc()
+    print(f"Ex3: Sequential time of {d} and {n}: {round(stop-start, 3)} seconds\n")
+    print("What is parallel time?")
+    start = pc() 
+    sphere_volume_parallel1(n, d)
+    stop = pc()
+    print(f"Ex3: Parallel time of {d} and {n}: {round(stop-start, 3)} seconds\n")
+    print("Excercise 3 complete.\n")
+    print(15*"-")
 
-    # #Ex4
-    # n = 1000000
-    # d = 11
-    # print("Testing excercise 4")
-    # start = pc()
-    # sphere_volume(n,d)
-    # stop = pc()
-    # print(f"Ex4: Sequential time of {d} and {n}: {round(stop-start, 3)} seconds")
-    # print("What is parallel time?")
-    # start = pc() 
-    # sphere_volume_parallel2(n, d)
-    # stop = pc() 
-    # print(f"Ex4: Parallell time of {d} and {n}: {round(stop-start,3)} seconds")
-    # print("Test complete")
+    #Ex4
+    n = 1000000
+    d = 11
+    print("Excercise 4:\n")
+    start = pc()
+    sphere_volume(n,d)
+    stop = pc()
+    print(f"Ex4: Sequential time of {d} and {n}: {round(stop-start, 3)} seconds")
+    print("\nWhat is parallel time?")
+    start = pc() 
+    sphere_volume_parallel2(n, d)
+    stop = pc() 
+    print(f"Ex4: Parallell time of {d} and {n}: {round(stop-start,3)} seconds")
+    print("Excercise 4 complete\n")
+    print(15*"-")
     
     
 
