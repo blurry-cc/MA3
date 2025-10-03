@@ -41,8 +41,9 @@ def sphere_volume(n, d): #Ex2, approximation
     #n is the number of points
     # d is the number of dimensions of the sphere 
 
-    points = [(2*np.random.uniform(size=d) - 1) for _ in range(n)] # list containing n arrays, of which elements are on (-1, 1)
-    inside = list(filter(lambda x: np.sum(np.square(x)) < 1, points)) # where x is an element (numpy array) of points 
+    points = [(2*np.random.uniform(size=d) - 1) for _ in range(n)] # list with n d-dimensional arrays of which elements are on (-1,1)
+    inside = list(filter(lambda x: np.sum(np.square(x)) < 1, points)) # filter out elements that are inside the sphere 
+                    #(sum of squared elements <1). x is one (out of n) array(s) in the points list 
 
     nd = len(inside) # amount of points inside the sphere
 
@@ -65,9 +66,9 @@ def sphere_volume_parallel1(n,d,np=10):
 
 #Ex4: parallel code - parallelize actual computations by splitting data
 def sphere_volume_parallel2(n,d,np=10):
-    #n is the number of points
+    # n is the number of points
     # d is the number of dimensions of the sphere
-    #np is the number of processes
+    # np is the number of processes
     partial = n//np # split the job 
     with future.ProcessPoolExecutor() as ex: 
         p = [ex.submit(sphere_volume, partial, d) for _ in range(np)] # np processes of smaller size 
